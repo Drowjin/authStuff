@@ -18,7 +18,7 @@ const Login = () => {
     const handleForm = async e => {
         e.preventDefault()
         try {
-            const res = await axios.post('https://auth-stuff-dobf.vercel.app/api/v1/login', dataForm)
+            const res = await axios.post('https://authstuff.onrender.com/api/v1/login', dataForm)
             if (res.data.success === true) {
                 userObj.handleUser()
                 toast.success(res.data.message)
