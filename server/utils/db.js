@@ -1,10 +1,12 @@
-import { connect } from 'mongoose'
+const { connect } = require('mongoose');
 
-export const dbConnection = async () => {
+const dbConnection = async () => {
     try {
-        await connect(process.env.MONGODB_URL)
+        await connect(process.env.MONGODB_URL);
         console.log('db connected!');
     } catch (error) {
-        console.log(error.message)
+        console.log(error.message);
     }
-}
+};
+
+module.exports = dbConnection;
