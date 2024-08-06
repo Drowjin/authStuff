@@ -11,7 +11,7 @@ const Home = () => {
 
     const handleLogOut = async () => {
         try {
-            const res = await axios.get('http://localhost:8080/api/v1/logout')
+            const res = await axios.get('https://auth-stuff-dobf.vercel.app/api/v1/logout')
             if (res.data.success === true) {
                 userObj.handleUser()
                 Nav('/')
