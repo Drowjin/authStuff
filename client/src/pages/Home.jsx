@@ -11,7 +11,8 @@ const Home = () => {
 
     const handleLogOut = async () => {
         try {
-            const res = await axios.get('https://authstuff.onrender.com/api/v1/logout')
+            // const res = await axios.get('https://authstuff.onrender.com/api/v1/logout')
+            const res = await axios.get('http://localhost:8080/api/v1/logout')
             if (res.data.success === true) {
                 userObj.handleUser()
                 Nav('/')

@@ -1,10 +1,11 @@
 import jwt from 'jsonwebtoken'
 
-export const authToken = async (req,res, next) => {
+export const authToken = async (req, res, next) => {
     try {
         const token = req.cookies.token
-        
-        return res.send({message: token})
+        if (!token) {
+            res.send({ success: false, message: "token is not defind!" })
+        }
         const verifyToken = jwt.verify(token, process.env.SEC_KEY)
         res.userId = verifyToken.userId
         next()

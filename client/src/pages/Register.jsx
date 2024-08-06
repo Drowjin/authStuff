@@ -16,7 +16,8 @@ const Register = () => {
     const handleForm = async e => {
         e.preventDefault()
         try {
-            const res = await axios.post('https://authstuff.onrender.com/api/v1/register', dataForm)
+            const res = await axios.post('http://localhost:8080/api/v1/register', dataForm)
+            // const res = await axios.post('https://authstuff.onrender.com/api/v1/register', dataForm)
             if (res.data.success === true) {
                 toast.success('register successfully!')
                 setDataForm({
