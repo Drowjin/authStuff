@@ -72,7 +72,12 @@ export const loginUser = async (req,res) => {
         const userDetails = await userModel.findOne({ $or : [{username: multFields},{email: multFields}] })
         if (userDetails &&(await bcrypt.compare(password, userDetails.password))) {
             const token = jwt.sign({userId : userDetails._id,email: userDetails.email, brand: "tech"},process.env.SEC_KEY)
-            res.cookie('token', token,{httpOnly: true}, {Credential : true}).send({message: 'login success!',success: true})
+            res.cookie('token', token, {
+                httpOnly: true, 
+                secure: true, 
+                sameSite: 'strict', 
+                maxAge: 3600000,
+            }).send({message: 'login success!',success: true})
         }else{
             return res.status(200).send({message: "wrong credentials"})
         }
