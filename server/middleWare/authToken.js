@@ -4,7 +4,7 @@ export const authToken = async (req,res, next) => {
     try {
         const token = req.cookies.token
         if (!token) {
-            return res.send({success: false, message: "wrong credentials!"})
+            return res.send({success: false,token,message: "wrong credentials!"})
         }
         const verifyToken = jwt.verify(token, process.env.SEC_KEY)
         res.userId = verifyToken.userId
