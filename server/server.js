@@ -18,6 +18,10 @@ app.use(cookieParser())
 
 dbConnection()
 
+app.get('/',(req,res) => {
+    res.send({message: "here it is down to my legs"})
+})
+
 app.use('/api/v1', userRoutes)
 
 app.listen(process.env.PORT, () => {
