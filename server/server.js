@@ -9,7 +9,7 @@ dotenv.config({path: './utils/config.env'})
 
 const app = express()
 app.use(cors({
-    origin: ["https://auth-stuff-dobf.vercel.app","http://localhost:5173"],
+    origin: "https://auth-stuff-dobf.vercel.app",
     methods: ['POST','GET','PUT','DELETE'],
     credentials: true,
 }))
