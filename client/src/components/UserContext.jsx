@@ -9,8 +9,8 @@ export const UserContext = ({children}) => {
 
     const handleUser = async () => {
         try {
-          // const res = await axios.get('https://authstuff.onrender.com/api/v1/current')
-          const res = await axios.get('http://localhost:8080/api/v1/current')
+          const res = await axios.get('https://authstuff.onrender.com/api/v1/current')
+          // const res = await axios.get('http://localhost:8080/api/v1/current')
           setUserToggle(res.data.success)
         } catch (error) {
           console.log(error.message)        
