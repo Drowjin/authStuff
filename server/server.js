@@ -5,21 +5,20 @@ import userRoutes from './router/user.router.js'
 import cors from 'cors'
 import cookieParser from 'cookie-parser'
 
-dotenv.config({path: './utils/config.env'})
+dotenv.config({ path: './utils/config.env' })
 
 const app = express()
 app.use(cors({
-    origin: ["http://localhost:5173","https://auth-stuff-dobf.vercel.app"],
-    methods: ['POST','GET','PUT','DELETE'],
-    credentials: true,
-}))
+    origin: 'https://auth-stuff-dobf.vercel.app',
+    credentials: true
+}));
 app.use(express.json())
 app.use(cookieParser())
 
 dbConnection()
 
-app.get('/',(req,res) => {
-    res.send({message: "here it is down to"})
+app.get('/', (req, res) => {
+    res.send({ message: "here it is down to" })
 })
 
 app.use('/api/v1', userRoutes)

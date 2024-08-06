@@ -75,7 +75,7 @@ export const loginUser = async (req,res) => {
             res.cookie('token', token, {
                 httpOnly: true,
                 secure: true,  
-                sameSite: 'lax'
+                sameSite: 'none'
             }).send({message: 'login success!',success: true})
         }else{
             return res.status(200).send({message: "wrong credentials"})
