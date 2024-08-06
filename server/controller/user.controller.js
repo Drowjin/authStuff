@@ -15,7 +15,11 @@ export const currentUser = async (req,res) => {
 
 export const logOut = async (req,res) => {
     try {
-        res.clearCookie("token").send({message: 'logout success fully!',success: true})
+        res.clearCookie("token",{
+            httpOnly: true,
+            secure: true,
+            sameSite: 'none',
+        }).send({message: 'logout success fully!',success: true})
     } catch (error) {
         res.status(500).send({error: error.message})
     }
