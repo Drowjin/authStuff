@@ -73,7 +73,9 @@ export const loginUser = async (req,res) => {
         if (userDetails &&(await bcrypt.compare(password, userDetails.password))) {
             const token = jwt.sign({userId : userDetails._id,email: userDetails.email, brand: "tech"},process.env.SEC_KEY)
             res.cookie('token', token, {
-                httpOnly: true
+                httpOnly: true,
+                secure: true,  
+                sameSite: 'none'
             }).send({message: 'login success!',success: true})
         }else{
             return res.status(200).send({message: "wrong credentials"})
